@@ -1,20 +1,27 @@
 ---
-product_id: vvdd_eebb
-alias: "vvdd eebb"
-description: evolución del proceso de ventas por estaciones blancas
-type: dataset 
-subtype: fact
-business: products/vvdd_eebb/business.yml #detalle funcional del producto, obtenido de gobierno
-outputs: 
-  - products/vvdd_eebb/contract.yml #toda la información técnica necesaria para consumir el producto
-inputs: #todas las fuentes de entrada del producto (que son otros productos)
-  - products/vvdd_eebb/KNA1.yml #clientes
-  - products/vvdd_eebb/KNVV.yml #clientes
-  - products/vvdd_eebb/VBAK.yml #pedidos cabecera
-  - products/vvdd_eebb/VBAP.yml #pedidos posición
-  - products/vvdd_eebb/VBRK.yml #facturas cabecera
-  - products/vvdd_eebb/VBRP.yml #facturas posición
-  - products/vvdd_eebb/LIKP.yml #entrega cabecera
-  - products/vvdd_eebb/LIPS.yml #entrega posición
-  - products/vvdd_eebb/KONV.yml #condiciones pedido
-pipeline: products/vvdd_eebb/pipeline.yml 
+product_id: vvdd_eebb #identificador único
+metadata: metadata.yml #información de gobierno del dato que estará enlazada con truedat
+outputs: #interfaz analítica
+  - ref: https://github.com/ricardobravocepsa/vvdd_eebb.git 
+    file: contract.yml #contrato de salida del producto = toda la información técnica necesaria para consumir el producto
+inputs: #todas las fuentes de entrada del producto (que son los contratos de salida de otros productos)
+  - ref: https://github.com/.../KNA1.git
+    file: contract.yml
+  - ref: https://github.com/.../KNVV.git
+    file: contract.yml
+  - ref: https://github.com/.../VBAK.git
+    file: contract.yml
+  - ref: https://github.com/.../VBAP.git
+    file: contract.yml
+  - ref: https://github.com/.../VBRK.git
+    file: contract.yml
+  - ref: https://github.com/.../VBRP.git
+    file: contract.yml
+  - ref: https://github.com/.../LIKP.git
+    file: contract.yml
+  - ref: https://github.com/.../LIPS.git
+    file: contract.yml
+  - ref: https://github.com/.../KONV.git
+    file: contract.yml    
+pipeline: pipeline.yml #definición del flujo de datos del producto = lista de jobs que componen el producto
+sla: sla.yml #interfaz de control/quality
