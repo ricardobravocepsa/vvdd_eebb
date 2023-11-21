@@ -1,0 +1,20 @@
+---
+product_id: vvdd_eebb
+alias: "vvdd eebb"
+description: evolución del proceso de ventas por estaciones blancas
+type: dataset 
+subtype: fact
+business: products/vvdd_eebb/business.yml #detalle funcional del producto, obtenido de gobierno
+outputs: 
+  - products/vvdd_eebb/contract.yml #toda la información técnica necesaria para consumir el producto
+inputs: #todas las fuentes de entrada del producto (que son otros productos)
+  - products/vvdd_eebb/KNA1.yml #clientes
+  - products/vvdd_eebb/KNVV.yml #clientes
+  - products/vvdd_eebb/VBAK.yml #pedidos cabecera
+  - products/vvdd_eebb/VBAP.yml #pedidos posición
+  - products/vvdd_eebb/VBRK.yml #facturas cabecera
+  - products/vvdd_eebb/VBRP.yml #facturas posición
+  - products/vvdd_eebb/LIKP.yml #entrega cabecera
+  - products/vvdd_eebb/LIPS.yml #entrega posición
+  - products/vvdd_eebb/KONV.yml #condiciones pedido
+pipeline: products/vvdd_eebb/pipeline.yml 
